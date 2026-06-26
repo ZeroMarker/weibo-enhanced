@@ -19,7 +19,33 @@
 - **状态管理**: React Hooks
 - **数据获取**: SWR
 
+## 功能特性
+
+- 🔐 微博OAuth授权登录
+- 👤 用户个人主页
+- 📝 微博动态浏览
+- ❤️ 点赞、评论、转发
+- 🔍 增强的搜索功能
+
 ## 快速开始
+
+### 配置微博OAuth
+
+1. 访问 [微博开放平台](https://open.weibo.com/) 创建应用
+2. 获取 Client ID 和 Client Secret
+3. 复制 `.env.local.example` 为 `.env.local`
+4. 填入你的微博应用配置：
+
+```bash
+cp .env.local.example .env.local
+```
+
+编辑 `.env.local`:
+```
+WEIBO_CLIENT_ID=你的Client_ID
+WEIBO_CLIENT_SECRET=你的Client_SECRET
+WEIBO_REDIRECT_URI=http://localhost:3000/api/auth/callback
+```
 
 ### 安装依赖
 
@@ -55,11 +81,18 @@ npm run start
 ```
 weibo/
 ├── src/
-│   ├── app/          # Next.js App Router
-│   ├── components/   # React组件
-│   ├── lib/          # 工具函数
-│   └── types/        # TypeScript类型定义
-├── public/           # 静态资源
+│   ├── app/
+│   │   ├── api/auth/    # OAuth API路由
+│   │   ├── login/       # 登录页面
+│   │   └── profile/     # 个人主页
+│   ├── components/      # React组件
+│   ├── lib/
+│   │   ├── weibo.ts     # 微博OAuth工具
+│   │   ├── session.ts   # 会话管理
+│   │   └── auth.ts      # 认证工具
+│   └── types/           # TypeScript类型定义
+├── public/              # 静态资源
+├── .env.local.example   # 环境变量示例
 ├── package.json
 └── README.md
 ```
