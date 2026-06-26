@@ -25,29 +25,25 @@
 
 ### 1. 配置微博OAuth
 
-访问 [微博开放平台](https://open.weibo.com/) 创建应用，获取以下信息：
+> 📖 详细配置说明请参考 [微博OAuth配置指南](./docs/weibo-oauth-setup.md)
 
-- Client ID
-- Client Secret
+**快速配置**:
 
-复制环境变量示例文件：
+1. 访问 [微博开放平台](https://open.weibo.com/) 创建应用
+2. 获取 App Key 和 App Secret
+3. 复制并编辑环境变量：
 
 ```bash
 cp .env.local.example .env.local
 ```
 
-编辑 `.env.local`，填入你的微博应用配置：
-
 ```env
-WEIBO_CLIENT_ID=你的Client_ID
-WEIBO_CLIENT_SECRET=你的Client_SECRET
+WEIBO_CLIENT_ID=你的App_Key
+WEIBO_CLIENT_SECRET=你的App_Secret
 WEIBO_REDIRECT_URI=http://localhost:3000/api/auth/callback
 ```
 
-**重要**: 在微博开放平台的应用设置中，添加回调地址：
-```
-http://localhost:3000/api/auth/callback
-```
+4. 在微博开放平台设置回调地址：`http://localhost:3000/api/auth/callback`
 
 ### 2. 安装依赖
 
